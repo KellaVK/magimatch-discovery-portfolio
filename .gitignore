@@ -1,0 +1,37 @@
+
+# Local configuration and generated output
+.env
+.env.*
+!.env.example
+!.env.test
+config.local.js
+**/config.local.js
+*serviceAccount*.json
+*service-account*.json
+*.pem
+*.key
+.DS_Store
+node_modules/
+dist/
+build/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+coverage/
+.wrangler/
+*.log
+# Runtime data and media are not source code
+*.sqlite
+*.sqlite3
+*.db
+*.mkv
+*.iso
+*.vob
+
+data/
+logs/
+*.npy
+*.npz

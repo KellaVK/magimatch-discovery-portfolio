@@ -1,0 +1,58 @@
+project:
+  name: MagiMatch
+  version: "5.0"
+
+paths:
+  raw_data: data/raw
+  processed: data/processed
+  embeddings: data/embeddings
+  checkpoints: data/checkpoints
+  db: data/processed/magimatch.db
+
+scraper:
+  base_url: "https://www.conjuringarchive.com"
+  # Books discovered via A-Z title index: /media/title/{letter}
+  # Book pages fetched from: /list/medium/{id}
+  batch_size: 50        # books per JSON output file
+  request_delay: 1.2    # seconds between requests
+  timeout: 30
+  max_retries: 3
+
+processor:
+  junk_categories:
+    - "Intros & Epilogues"
+    - "Articles"
+    - "General"
+    - "Miscellaneous"
+
+  junk_titles:
+    - "introduction"
+    - "foreword"
+    - "preface"
+    - "acknowledgements"
+    - "acknowledgments"
+    - "table of contents"
+    - "bibliography"
+    - "dedication"
+    - "appendix"
+    - "glossary"
+    - "index"
+    - "about the author"
+    - "copyright"
+    - "colophon"
+    - "conclusion"
+
+  skip_if_empty: true
+
+embeddings:
+  model: "text-embedding-3-small"
+  dimensions: 1536
+  batch_size: 512
+
+llm:
+  model: "gpt-4o-mini"
+  max_tokens: 200
+  temperature: 0.2
+
+enrichment:
+  min_tricks_for_style: 5
